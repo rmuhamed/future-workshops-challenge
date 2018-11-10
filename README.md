@@ -1,3 +1,0 @@
-# FutureWorkshopTest
-
-Technical test excercise
