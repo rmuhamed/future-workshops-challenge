@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2018 FutureWorkshops. All rights reserved.
+  -->
+
+<android.support.constraint.ConstraintLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  tools:context="com.futureworkshops.codetest.android.presentation.splashscreen.SplashActivity">
+  
+  <com.github.jorgecastillo.FillableLoader
+    android:id="@+id/fillableLoader"
+    android:layout_width="200dp"
+    android:layout_height="200dp"
+    app:fl_clippingTransform="waves"
+    app:fl_fillColor="@color/splash_fill_color"
+    app:fl_fillDuration="@integer/fill_duration"
+    app:fl_fillPercentage="@integer/fill_percentage"
+    app:fl_originalHeight="@integer/original_svg_height"
+    app:fl_originalWidth="@integer/original_svg_width"
+    app:fl_strokeColor="@color/splash_stroke_color"
+    app:fl_strokeDrawingDuration="@integer/stroke_drawing_duration"
+    app:fl_strokeWidth="@dimen/stroke_width"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    />
+
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,11 @@
+<!--
+  ~ Copyright (c) 2018 FutureWorkshops. All rights reserved.
+  -->
+
+<resources>
+    
+    <style name="FwTheme.Splashscreen.Progressbar">
+        <item name="colorControlActivated">@color/icons</item>
+    </style>
+
+</resources>

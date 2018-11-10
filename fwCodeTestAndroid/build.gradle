@@ -1,0 +1,81 @@
+apply plugin: 'com.android.application'
+apply from: '../android_commons.gradle'
+apply from: '../android_dependencies.gradle'
+
+android {
+    
+    defaultConfig {
+        applicationId "com.futureworkshops.codetest.android"
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    
+    buildTypes {
+        debug {
+        }
+    
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+}
+
+dependencies {
+    def uiDependencies = rootProject.ext.uiDependencies
+    def domainDependencies = rootProject.ext.domainDependencies
+    def testDependencies = rootProject.ext.testDependencies
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    
+    annotationProcessor uiDependencies.butterKnifeApt
+    annotationProcessor uiDependencies.glideAnnotationProcessor
+
+    implementation uiDependencies.glide
+    implementation uiDependencies.butterKnife
+    implementation uiDependencies.appCompat
+    implementation uiDependencies.designCompat
+    implementation uiDependencies.cardView
+    implementation uiDependencies.constraintLayout
+    implementation uiDependencies.fillableLoaders
+    
+    implementation domainDependencies.timber
+    implementation domainDependencies.dagger
+    annotationProcessor domainDependencies.daggerCompiler
+    
+    implementation domainDependencies.daggerAndroid
+    implementation domainDependencies.daggerAndroidSupport
+    annotationProcessor domainDependencies.daggerAndroidProcessor
+    
+    implementation domainDependencies.gson
+    implementation domainDependencies.okHttp
+    implementation domainDependencies.okHttpUrlConnection
+    implementation domainDependencies.okHttpLogger
+    implementation domainDependencies.retrofitGsonConverter
+    implementation (domainDependencies.retrofitXmlConverter) {
+        exclude group: 'xpp3', module: 'xpp3'
+        exclude group: 'stax', module: 'stax-api'
+        exclude group: 'stax', module: 'stax'
+    }
+    implementation domainDependencies.retrofitRxAdapter
+    implementation domainDependencies.rxJava
+    implementation domainDependencies.rxAndroid
+
+    implementation domainDependencies.restMock
+
+    annotationProcessor domainDependencies.autoValue
+    compileOnly domainDependencies.autoValueAnnotations
+    annotationProcessor domainDependencies.autoValueParcelable
+
+    testImplementation testDependencies.junit
+    androidTestImplementation testDependencies.espressoCore
+    androidTestImplementation testDependencies.testRunner
+
+    androidTestImplementation domainDependencies.dagger
+    androidTestAnnotationProcessor domainDependencies.daggerCompiler
+}

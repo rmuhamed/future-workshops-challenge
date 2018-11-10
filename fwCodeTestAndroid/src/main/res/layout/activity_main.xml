@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2018 FutureWorkshops. All rights reserved.
+  -->
+<android.support.design.widget.CoordinatorLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.landing.MainActivity">
+  
+  <FrameLayout
+    android:id="@+id/fragmentContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:paddingBottom="?attr/actionBarSize"
+    tools:background="@color/colorAccent">
+    
+    
+  </FrameLayout>
+  
+  
+  
+  <android.support.design.widget.BottomNavigationView
+    android:id="@+id/bottomNavigation"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary"
+    android:minHeight="?attr/actionBarSize"
+    app:itemIconTint="@drawable/navigation_state_selector"
+    app:itemTextColor="@drawable/navigation_state_selector"
+    app:menu="@menu/bottom_navigation_main"
+    app:layout_anchor="@id/fragmentContainer"
+    app:layout_anchorGravity="bottom"/>
+
+</android.support.design.widget.CoordinatorLayout>
+
+

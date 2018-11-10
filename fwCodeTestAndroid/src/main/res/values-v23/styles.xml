@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="FwTheme" parent="BaseTheme">
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <style name="FwTheme.Splashscreen" parent="SplashscreenBase">
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+
+</resources>

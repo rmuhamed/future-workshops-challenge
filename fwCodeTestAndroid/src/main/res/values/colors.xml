@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#fff</color>
+    <color name="colorPrimaryDark">#fff</color>
+    <color name="colorAccent">#FF5252</color>
+    
+    <color name="ic_launcher_background">#FFFDFE</color>
+    
+    <color name="textColorPrimary">#212121</color>
+    <color name="textColorSecondary">#757575</color>
+    <color name="icons">#FFFFFF</color>
+    <color name="divider">#BDBDBD</color>
+    
+    <!-- splashscreen svg -->
+    <color name="splash_stroke_color">#8fbdbdbd</color>
+    <color name="splash_fill_color">#FF5252</color>
+    
+    
+    <color name="text_protection_overlay_color">#6d212121</color>
+</resources>

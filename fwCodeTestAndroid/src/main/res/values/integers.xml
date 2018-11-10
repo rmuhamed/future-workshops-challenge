@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2018 FutureWorkshops. All rights reserved.
+  -->
+
+<resources>
+  <integer name="fill_duration">3500</integer>
+  <integer name="stroke_drawing_duration">1300</integer>
+  <integer name="fill_percentage">100</integer>
+  <integer name="original_svg_width">483</integer>
+  <integer name="original_svg_height">483</integer>
+</resources>

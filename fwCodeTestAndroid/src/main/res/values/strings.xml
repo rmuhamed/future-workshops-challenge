@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">FW-CodeTest-Android</string>
+
+    <string name="title_search">Search</string>
+    <string name="title_favorites">Favourites</string>
+    <string name="title_breeds">Breeds</string>
+    <string name="important_action">Important Action</string>
+</resources>

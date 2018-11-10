@@ -1,0 +1,128 @@
+{
+
+  "breeds" : [
+
+    { "id": 1,
+      "name": "French Bulldog",
+      "description": "The origin of the modern French Bulldog breed descends directly from the dogs of the Molossians, an ancient Greek tribe. The dogs were spread throughout the ancient world by Phoenician traders. British Molossian dogs were developed into the Mastiff. A sub-family of the Mastiff were the Bullenbeisser, a type of dog used for bull-baiting. Blood sports such as bull-baiting were outlawed in England in 1835, leaving these \"Bulldogs\" unemployed. However, they had been bred for non-sporting reasons since at least 1800, and so their use changed from a sporting breed to a companion breed. To reduce their size, some Bulldogs were crossed with terriers, while others were crossed with pugs. By 1850 the Toy Bulldog had become common in England, and appeared in conformation shows when they began around 1860. These dogs weighed around 16–25 pounds (7.3–11.3 kg), although classes were also available at dog shows for those that weighed under 12 pounds (5.4 kg). At the same time, lace workers from Nottingham, displaced by the Industrial Revolution, began to settle in Normandy, France. They brought a variety of dogs with them, including Miniature Bulldogs. The dogs became popular in France and a trade in imported small Bulldogs was created, with breeders in England sending over Bulldogs that they considered to be too small, or with faults such as ears that stood up. By 1860, there were few Miniature Bulldogs left in England, such was their popularity in France and due to the exploits of specialist dog exporters. The small Bulldog type gradually became thought of as a breed, and received a name, the Bouledogue Francais. This Francization of the English name is also a contraction of the words boule (all) and dogue (mastiff or molosser). The dogs were highly fashionable and were sought after by society ladies and Parisian prostitutes alike, as well as creatives such as artists, writers, and fashion designers. However, records were not kept of the breed's development as it diverged further away from its original Bulldog roots. As it changed, terrier and pug stock may have been brought in to develop traits such as the breed's long straight ears, and the roundness of their eyes.",
+      "photo": "https://upload.wikimedia.org/wikipedia/commons/2/29/Confucius_De_la_Parure.jpg",
+      "origin": "England, France"
+    },
+
+    { "id": 2,
+      "name": "Boxer",
+      "description": "The Boxer is part of the Molosser dog group, developed in Germany in the late 19th century from the now extinct Bullenbeisser, a dog of Mastiff descent, and Bulldogs brought in from Great Britain. The Bullenbeisser had been working as a hunting dog for centuries, employed in the pursuit of bear, wild boar, and deer. Its task was to seize the prey and hold it until the hunters arrived. In later years, faster dogs were favored and a smaller Bullenbeisser was bred in Brabant, in northern Belgium. It is generally accepted that the Brabanter Bullenbeisser was a direct ancestor of today's Boxer. In 1894, three Germans by the names of Friedrich Robert, Elard König, and R. Höpner decided to stabilize the breed and put it on exhibition at a dog show. This was done in Munich in 1896, and the year before they founded the first Boxer Club, the Deutscher Boxer Club. The Club went on to publish the first Boxer breed standard in 1904, a detailed document that has not been changed much to this day.",
+      "photo": "https://upload.wikimedia.org/wikipedia/commons/4/41/Brindle_Boxers_1.JPG",
+      "origin": "Germany"
+    },
+    { "id": 3,
+      "name": "Jack Russell Terrier",
+      "description": "The Jack Russell Terrier is a small terrier that has its origins in fox hunting. It is principally white-bodied and smooth, rough or broken-coated but can be any colour. The Jack Russell is frequently confused with the Parson Russell terrier (see the American Kennel Club) and the Russell terrier, which is a shorter-legged, stockier variety. (Within the Fédération Cynologique Internationale, the \"Russell terrier\" is also known as \"Jack Russell terrier\".) The term \"Jack Russell\" is also commonly misapplied to other small white terriers. The Jack Russell is a broad type, with a size range of 10–15 inches (25–38 cm). The Parson Russell is limited only to a middle range with a standard size of 12–14 inches (30–36 cm), while the Russell terrier is smaller at 8–12 inches (20–30 cm). Each breed has different physical proportions according to the standards of their breed clubs.",
+      "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Jack_Russell_Terrier_1.jpg/800px-Jack_Russell_Terrier_1.jpg",
+      "origin": "England"
+    },
+    { "id": 4,
+      "name": "Labrador Retriever",
+      "description": "The Labrador Retriever, or just Labrador, is a type of retriever-gun dog. The Labrador is one of the most popular breeds of dog in Canada, the United Kingdom and the United States. A favourite disability assistance breed in many countries, Labradors are frequently trained to aid the blind, those who have autism, to act as a therapy dog, or to perform screening and detection work for law enforcement and other official agencies. Additionally, they are prized as sporting and hunting dogs. A few kennels breeding their ancestors, the St. John's water dog, were in England. At the same time, a combination of the sheep protection policy in Newfoundland and rabies quarantine in the United Kingdom, led to the gradual demise of the St. John's water dog in Canada.",
+      "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/YellowLabradorLooking_new.jpg/440px-YellowLabradorLooking_new.jpg",
+      "origin": "United Kingdom, Canada"
+    },
+    { "id": 5,
+      "name": "Maltese",
+      "description": "The Maltese, Canis familiaris Maelitacus, is a small breed of dog in the Toy Group. It descends from dogs originating in the Central Mediterranean Area. The breed name and origins are generally understood to derive from the Mediterranean island nation of Malta. This ancient breed has been known by a variety of names throughout the centuries. Originally called the \"Canis Melitaeus\" in Latin, it has also been known in English as the \"ancient dog of Malta,\" the \"Roman Ladies' Dog,\" the \"Maltese Lion Dog,\" and \"Melita\" (the former name of Malta). The origin of the common name \"Cokie\" is unknown, but is believed to have originated in the mid-1960s on the U.S. East Coast and spread in popular use. This breed has been referred to falsely as the \"Bichon\", a name that refers to the family (\"small long-haired dog\") and not the breed. The Kennel Club officially settled on the name \"Maltese\" for the breed in the 19th century.",
+      "photo": "https://upload.wikimedia.org/wikipedia/commons/e/eb/Maltezer_Vereniging_Belgie.jpg",
+      "origin": "Italy"
+    },
+    { "id": 6,
+      "name": "Pointer",
+      "description": "The Pointer, often called the English Pointer, is a medium to large-sized breed of dog developed in England as a gun dog. It is one of several pointing breeds. Pointers are even-tempered, congenial dogs, and despite their large size, make good house pets so long as they get sufficient exercise due to their extremely high energy levels. Pointers are intelligent, affectionate, clean and intensely loyal. Their aggression level is very low to non-existent and they normally happily coexist with other dogs and cats. They are not typically territorial and can be reserved with strangers. They are very good with children and fit in well with family life generally. Pups can be somewhat boisterous and their long legs as they grow, make them appear somewhat clumsy in a charming way. They will bark at suspicious noises, but are not a great watchdog breed. While Pointers were bred to be hunting dogs, they are perfectly content to be given adequate exercise by other means. Since they are a galloping breed, regular exercise is important for them, as it is for all sporting breeds. A good-sized, securely fenced yard is a must to keep a Pointer safe, since they are bred to hunt a good distance from their person. Pointers are habitual \"couch potatoes\" who enjoy relaxing on the family's chairs or sofas. This is a natural part of their desire to feel part of the pack.",
+      "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/English_pointer.jpg/440px-English_pointer.jpg",
+      "origin": "England"
+    },
+    { "id": 7,
+      "name": "Rottweiler",
+      "description": "The Rottweiler is a breed of domestic dog, regarded as medium-to-large or large. The dogs were known in German as Rottweiler Metzgerhund, meaning Rottweil butchers' dogs, because their main use was to herd livestock and pull carts laden with butchered meat to market. This continued until the mid-19th century when railways replaced droving. Although still used to herd stock in many parts of the world, Rottweilers are now also used as search and rescue dogs, as guard dogs and police dogs. The Rottweiler is one of the oldest of herding breeds. With a history possibly dating back to the Roman Empire, the Rottweiler may be a descendant of ancient Roman drover dogs; a mastiff-type dog that was a dependable, rugged dog with great intelligence and guarding instincts.",
+      "photo": "https://upload.wikimedia.org/wikipedia/commons/2/26/Rottweiler_standing_facing_left.jpg",
+      "origin": "Germany"
+    },
+    { "id": 8,
+      "name": "Bull Terrier",
+      "description": "The Bull Terrier is a breed of dog in the terrier family. There is also a miniature version of this breed which is officially known as the Miniature Bull Terrier. The Bull Terrier's most recognizable feature is its head, described as 'egg-shaped' when viewed from the front; the top of the skull is almost flat. The profile curves gently downwards from the top of the skull to the tip of the nose, which is black and bent downwards at the tip, with well developed nostrils. The under-jaw is deep and strong. The unique triangular eyes are small, dark, and deep-set. Bull Terriers are the only dogs that have triangular eyes. The body is full and round, with strong, muscular shoulders. The tail is carried horizontally. They are either white, red, fawn, black, brindle, or a combination of these.Their unusually low center of gravity makes it hard for opponents to knock it down.",
+      "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Bullterier_089_LM.jpg/440px-Bullterier_089_LM.jpg",
+      "origin": "England"
+    },
+    { "id": 9,
+      "name": "Boston Terrier",
+      "description": "The Boston Terrier is a breed of dog originating in the United States. This \"American Gentleman\" was accepted in 1893 by the American Kennel Club as a non-sporting breed. Color and markings are important when distinguishing this breed to the AKC standard. They should be either black, brindle or seal with white markings. Bostons are small and compact with a short tail and erect ears. The AKC says they are highly intelligent and very easily trained. They are friendly and can be stubborn at times. The average life span of a Boston is around 11 to 13 years, though some can live well into their teens. The American Kennel Club ranked the Boston Terrier as the 21st most popular breed in 2016.",
+      "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Boston_Terrier_Eden_Forever.JPG/2560px-Boston_Terrier_Eden_Forever.JPG",
+      "origin": "United States"
+    },
+    { "id": 10,
+      "name": "Beagle",
+      "description": "The beagle is a breed of small hound that is similar in appearance to the much larger foxhound. The beagle is a scent hound, developed primarily for hunting hare. With a great sense of smell and superior tracking instinct, the beagle is employed as detection dog for prohibited agricultural imports and foodstuffs in quarantine around the world. The beagle is intelligent but single-minded. It is a popular pet due to its size, good temper, and lack of inherited health problems. Although beagle-type dogs have existed for 2,500 years, the modern breed was developed in Great Britain around the 1830s from several breeds, including the Talbot Hound, the North Country Beagle, the Southern Hound, and possibly the Harrier. Beagles have been depicted in popular culture since Elizabethan times in literature and paintings, and more recently in film, television, and comic books. Snoopy of the comic strip Peanuts has been called \"the world's most famous beagle\"",
+      "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Beagle_600.jpg/440px-Beagle_600.jpg",
+      "origin": "England"
+    },
+    { "id": 11,
+      "name": "Dogo Argentino",
+      "description": "The Dogo Argentino is a large, white, muscular dog that was developed in Argentina primarily for the purpose of big-game hunting, including wild boar; the breeder, Antonio Nores Martínez, also wanted a dog that would exhibit steadfast bravery and willingly protect its human companion. It was first bred in 1928, from the Cordoba Fighting Dog along with a wide array of other breeds including the Great Dane. The Dogo Argentino is a large white short-coated dog with muscular and strong body that rarely has any markings (any type of marking or spot on the coat is considered a flaw). While it is not accepted in many of the clubs, a Dogo Argentino can have a black spot on its head known as 'pirata' and it is accepted by the Federación Cinológica Argentina.",
+      "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Vinnymarch2012c.jpg/921px-Vinnymarch2012c.jpg",
+      "origin": "Argentina"
+    },
+    { "id": 12,
+      "name": "Doberman Pinscher",
+      "description": "The Dobermann, or Doberman Pinscher in the United States and Canada, is a medium-large breed of domestic dog originally developed around 1890 by Karl Friedrich Louis Dobermann, a tax collector from Germany. The Dobermann has a long muzzle and stands on its toes (not the pads) and is not usually heavy-footed. Ideally, they have an even and graceful gait. Traditionally, the ears are cropped and posted and the tail is docked. However, in some countries it is illegal to do so. Dobermanns have markings on the chest, paws/legs, muzzle, above the eyes, and underneath the tail. Dobermanns are well known as intelligent, alert and tenaciously loyal companions and guard dogs. Personality varies a great deal between each individual, but if taken care of and trained properly they tend to be loving and devoted companions. The Dobermann is driven, strong and sometimes stubborn. Owning one requires commitment and care, but if trained well, they can be wonderful family dogs. With a consistent approach they can be easy to train and will learn very quickly. If properly trained, they can be excellent with children.",
+      "photo": "https://upload.wikimedia.org/wikipedia/commons/7/7a/European_Dobermann.jpg",
+      "origin": "Germany"
+    },
+    { "id": 13,
+      "name": "Border Collie",
+      "description": "The Border Collie is a working and herding dog breed developed in the Anglo-Scottish border region for herding livestock, especially sheep. It was specifically bred for intelligence and obedience. Considered highly intelligent, extremely energetic, acrobatic and athletic, they frequently compete with great success in sheepdog trials and dog sports. They are often cited as the most intelligent of all domestic dogs. Border Collies continue to be employed in their traditional work of herding livestock throughout the world. In general, Border Collies are medium-sized dogs with a moderate amount of coat, which is most often thick and sheds often. They have a double coat that varies from smooth to rough and is occasionally curled. While black and white is the most commonly seen colour pattern of the Border Collie, the breed appears in just about any colour and pattern known to occur in dogs. Some of these include black tricolour (black/tan/white), liver and white, and red tricolour (red/tan/white) which have also been seen regularly, and other colours such as blue, lilac, red merle, blue merle, brindle, and Australian red (also known as ee red, blonde, recessive red, or gold) which is seen less frequently. Some Border Collies may also have single-colour coats.",
+      "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Border_Collie.jpg/440px-Border_Collie.jpg",
+      "origin": "United Kingdom"
+    },
+    { "id": 14,
+      "name": "Bracco Italiano",
+      "description": "The Bracco Italiano is a breed of dog developed in Italy as a versatile gun dog. The Bracco - or Italian Pointer- should be athletic and powerful in appearance, most resembling a cross between a German Shorthaired Pointer and a Bloodhound, although it is nothing like them in character. It has pendulous upper lips and long ears that create a serious expression. It should be \"almost square\", meaning that its height at the withers should be almost the same as the length of its body. It should not however be actually square as this would render its famous rear driving push off and front/rear extension to be compromised, thus losing much of its powerful grace. The tail has historically been docked, mostly due to the strong possibility of injury in rough/dense terrain when hunting, however there has been a sea-change in the European Union, with some now working the breed with full tail.",
+      "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Giotto_BI.jpg/440px-Giotto_BI.jpg",
+      "origin": "Italy"
+    },
+    { "id": 15,
+      "name": "Saint Bernard",
+      "description": "The St. Bernard or St Bernard is a breed of very large working dog from the western Alps. They were originally bred for rescue at the Great St Bernard Pass on the Italian-Swiss border, and Little St Bernard Pass in the Italian-French border, located close to one another. The two hospices were built and run by the same monk brotherhood. The breed has become famous through tales of alpine rescues, as well as for its enormous size. The St. Bernard is a giant dog. The average weight of the breed is between 65 and 120 kg (140 and 260 lb) or more, and the approximate height at the withers is 70 to 90 cm (28 to 35 in). The coat can be either smooth or rough; the smooth coat being close and flat while the rough is dense, flat, and more profuse around the neck and legs. The colour is typically a red shade with white, or a mahogany brindle with white. Black shading is usually found on the face and ears. The tail is long and heavy, hanging low. Eyes are usually brown, but sometimes can be icy blue, and should have naturally tight lids, with haws only slightly visible.",
+      "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Hummel_Vedor_vd_Robandahoeve.jpg/440px-Hummel_Vedor_vd_Robandahoeve.jpg",
+      "origin": "Italy, Switzerland"
+    },
+    { "id": 16,
+      "name": "West Highland White Terrier",
+      "description": "The West Highland White Terrier, commonly known as the Westie, is a breed of dog from Scotland with a distinctive white harsh coat with a somewhat soft white undercoat. It is a medium-sized terrier, although with longer legs than other Scottish breeds of terrier. It has a white double coat of fur which fills out the dog's face, giving it a rounded appearance. The breed is intelligent, quick to learn, and can be good with children, but does not always tolerate rough handling. The Westie is an active and intelligent breed, and is social with a high prey drive, as they were once used to hunt rodents.The modern breed is descended from a number of breeding programs of white terriers in Scotland before the 20th century. Cousin to the Cairn Terrier, the Westie was bred to hunt small rodents at places such as farms. Edward Donald Malcolm, 16th Laird of Poltalloch, is credited with the creation of the modern breed from his Poltalloch Terrier, but did not want to be known as such.",
+      "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/West_Highland_White_Terrier_Krakow.jpg/440px-West_Highland_White_Terrier_Krakow.jpg",
+      "origin": "Scotland"
+    },
+    { "id": 17,
+      "name": "Yorkshire Terrier",
+      "description": "he Yorkshire Terrier is a small dog breed of terrier type, developed during the 19th century in Yorkshire, England, to catch rats in clothing mills. Ideally its maximum size is 7 pounds (3.2 kg), although some may exceed this and grow up to 15 pounds (6.8 kg). It is placed in the Toy Terrier section of the Terrier Group by the Fédération Cynologique Internationale and in the Toy Group or Companion Group by other kennel clubs, including the American Kennel Club. A popular companion dog, the Yorkshire Terrier has also been part of the development of other breeds, such as the Australian Silky Terrier. It has a grey, black, and tan coat, and the breed's nickname is Yorkie.",
+      "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Imageyorkie.png/440px-Imageyorkie.png",
+      "origin": "England"
+    },
+    { "id": 18,
+      "name": "Pyrenean Shepherd ",
+      "description": "The Pyrenean Shepherd (known in France originally, and also in non-AKC registries such as the UKC, as the Berger des Pyrénées, and in Spain as the Pastor de los Pirineos) is a medium-small breed of dog native to the Pyrenees mountains in southern France and northern Spain, bred since at least medieval times for herding livestock, especially sheep. It worked as an active herder together with the Great Pyrenees, another mountain dog, which acted as the flock's guardian.",
+      "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Berger_des_Pyr%C3%A9n%C3%A9es.jpg/440px-Berger_des_Pyr%C3%A9n%C3%A9es.jpg",
+      "origin": "France, Spain"
+    },
+    { "id": 19,
+      "name": "Neopolitan Mastiff",
+      "description": "The Neapolitan Mastiff or Mastino is a large, ancient dog breed. This massive breed is often used as a guard and defender of family and property due to their protective instincts and their fearsome appearance.",
+      "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Cannon_-_Male_Neapolitan_Mastiff_1998.jpeg/721px-Cannon_-_Male_Neapolitan_Mastiff_1998.jpeg",
+      "origin": "Italy"
+    },
+    { "id": 20,
+      "name": "Standard Schnauzer",
+      "description": "The Standard Schnauzer is a dog breed that originated in Germany in the 15th and 16th centuries. The literal translation is \"snouter\" from the German word for \"snout\" and means colloquially \"moustache\", because of the dog's distinctively bearded snout. Although the schnauzer is considered a terrier-type dog, they do not have the typical terrier temperament. Generally classified as a working or utility dog, this versatile breed is a robust, squarely built, medium-sized dog with aristocratic bearing. It has been claimed that it was a popular subject of painters Sir Joshua Reynolds, Albrecht Dürer and Rembrandt, but actual proof remains elusive. Standard Schnauzers are either salt-and-pepper or black in color, and are known for exhibiting many of the \"ideal\" traits of any breed. These include high intelligence, agility, alertness, reliability, strength and endurance. This breed of dog has been very popular in Europe, specifically Germany, where it originated. The breed was first exhibited at a show in Hanover in 1879, and since then has taken top honors in many shows, including the prestigious \"Best in Show at Westminster Kennel Club\" in the United States in 1997.",
+      "photo": "https://upload.wikimedia.org/wikipedia/commons/a/a1/Emppumenossa.jpg",
+      "origin": "Germany"
+    }
+
+  ]
+}

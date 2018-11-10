@@ -1,0 +1,18 @@
+<!--
+  ~ Copyright (c) 2018 FutureWorkshops. All rights reserved.
+  -->
+
+<FrameLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  tools:context="com.futureworkshops.codetest.android.presentation.breeds.search.SearchBreedsFragment">
+  
+  <TextView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/default_padding"
+    android:text="@string/title_search"/>
+
+</FrameLayout>

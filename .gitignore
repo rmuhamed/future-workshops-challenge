@@ -1,0 +1,23 @@
+# IDEA/Android Studio ignores
+*.iml
+*.ipr
+*.iws
+/.idea/*
+
+# IDEA/Android Studio Ignore exceptions
+!/.idea/vcs.xml
+!/.idea/fileTemplates/
+!/.idea/inspectionProfiles/
+!/.idea/scopes/
+!/.idea/codeStyles/
+!/.idea/encodings.xml
+!/.idea/copyright/
+!/.idea/compiler.xml
+
+#Gradle
+.gradle
+local.properties
+build
+
+#Other
+.DS_Store
