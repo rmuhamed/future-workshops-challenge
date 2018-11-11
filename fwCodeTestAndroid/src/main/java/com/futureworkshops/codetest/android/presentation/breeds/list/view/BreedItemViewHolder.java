@@ -36,7 +36,7 @@ public class BreedItemViewHolder extends RecyclerView.ViewHolder {
         .load(breed.photoUrl())
         .into(this.breedPhotoImage);
 
-    this.itemView.setOnClickListener(v -> this.onItemSelectionHandler.onItemSelected(breed));
+    this.itemView.setOnClickListener(v -> this.onItemSelectionHandler.onItemSelected(this.breedPhotoImage, breed));
   }
 
   public void addItemSelectionHandler(OnItemSelectedHandler<Breed> onItemSelectedHandler) {
