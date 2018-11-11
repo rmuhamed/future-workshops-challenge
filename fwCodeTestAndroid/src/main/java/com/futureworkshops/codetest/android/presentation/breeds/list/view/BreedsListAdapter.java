@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.futureworkshops.codetest.android.R;
-import com.futureworkshops.codetest.android.data.network.dto.BreedDto;
+import com.futureworkshops.codetest.android.domain.model.Breed;
 
 import java.util.List;
 
@@ -15,7 +15,8 @@ import java.util.List;
  * Created by romh on 2018-11-10
  */
 public class BreedsListAdapter extends RecyclerView.Adapter<BreedItemViewHolder> {
-  private List<BreedDto> list;
+  private List<Breed> list;
+  private OnItemSelectedHandler<Breed> onItemSelectedHandler;
 
   @NonNull
   @Override
@@ -26,9 +27,10 @@ public class BreedsListAdapter extends RecyclerView.Adapter<BreedItemViewHolder>
 
   @Override
   public void onBindViewHolder(@NonNull BreedItemViewHolder holder, int position) {
-    BreedDto item = this.getItem(position);
+    Breed item = this.getItem(position);
     if (item != null) {
       holder.fillFrom(item);
+      holder.addItemSelectionHandler(this.onItemSelectedHandler);
     }
   }
 
@@ -37,13 +39,17 @@ public class BreedsListAdapter extends RecyclerView.Adapter<BreedItemViewHolder>
     return this.list != null ? this.list.size() : 0;
   }
 
-  public void updateWith(List<BreedDto> list) {
+  public void updateWith(List<Breed> list) {
     this.list = list;
 
     this.notifyDataSetChanged();
   }
 
-  private BreedDto getItem(int position) {
+  private Breed getItem(int position) {
     return this.list != null && !this.list.isEmpty() ? this.list.get(position) : null;
+  }
+
+  public void addOnItemSelectedHandler(OnItemSelectedHandler<Breed> onItemSelectedHandler) {
+    this.onItemSelectedHandler = onItemSelectedHandler;
   }
 }

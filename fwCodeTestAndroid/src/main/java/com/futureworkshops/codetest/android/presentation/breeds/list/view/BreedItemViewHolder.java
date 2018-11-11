@@ -7,23 +7,39 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.futureworkshops.codetest.android.R;
-import com.futureworkshops.codetest.android.data.network.dto.BreedDto;
+import com.futureworkshops.codetest.android.domain.model.Breed;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * Created by romh on 2018-11-10
  */
 public class BreedItemViewHolder extends RecyclerView.ViewHolder {
+  @BindView(R.id.breedName)
+  TextView breedNameLabel;
+
+  @BindView(R.id.breedImage)
+  ImageView breedPhotoImage;
+
+  private OnItemSelectedHandler<Breed> onItemSelectionHandler;
+
   public BreedItemViewHolder(View itemView) {
     super(itemView);
+
+    ButterKnife.bind(this, itemView);
   }
 
-  public void fillFrom(BreedDto item) {
-    TextView breedNameLabel = this.itemView.findViewById(R.id.breedName);
-    ImageView breedImage = this.itemView.findViewById(R.id.breedImage);
-
-    breedNameLabel.setText(item.getName());
+  public void fillFrom(Breed breed) {
+    this.breedNameLabel.setText(breed.name());
     Glide.with(this.itemView.getContext())
-        .load(item.getPhotoUrl())
-        .into(breedImage);
+        .load(breed.photoUrl())
+        .into(this.breedPhotoImage);
+
+    this.itemView.setOnClickListener(v -> this.onItemSelectionHandler.onItemSelected(breed));
+  }
+
+  public void addItemSelectionHandler(OnItemSelectedHandler<Breed> onItemSelectedHandler) {
+    this.onItemSelectionHandler = onItemSelectedHandler;
   }
 }
