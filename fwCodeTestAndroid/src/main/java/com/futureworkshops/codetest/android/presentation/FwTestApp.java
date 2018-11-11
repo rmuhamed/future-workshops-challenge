@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 import com.futureworkshops.codetest.android.BuildConfig;
 import com.futureworkshops.codetest.android.data.network.server.MockServer;
+import com.futureworkshops.codetest.android.domain.repositories.NetworkRepository;
 
 import timber.log.Timber;
 
@@ -39,6 +40,8 @@ public class FwTestApp extends Application {
         mockServer.start();
 
         this.baseURL = mockServer.getUrl();
+
+        NetworkRepository.initialize(this.baseURL);
     }
 
     public String getBaseURL() {
