@@ -11,13 +11,14 @@ import android.support.transition.Transition;
 import android.support.transition.TransitionInflater;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-
 import com.futureworkshops.codetest.android.R;
 import com.futureworkshops.codetest.android.data.network.RestManager;
 import com.futureworkshops.codetest.android.data.network.dto.BreedDto;
@@ -27,6 +28,7 @@ import com.futureworkshops.codetest.android.domain.repositories.BreedsRepository
 import com.futureworkshops.codetest.android.presentation.breeds.details.BreedDetailsFragment;
 import com.futureworkshops.codetest.android.presentation.notification.NotificationHelper;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.reactivex.Observable;
 import retrofit2.Retrofit;
@@ -40,7 +42,12 @@ public class BreedsListFragment extends Fragment implements OnItemSelectedHandle
   private static final String BASE_URL = "BASE_URL";
   private String baseURL;
   private BreedsListAdapter adapter;
-  private RecyclerView breedListRecycler;
+
+  @BindView(R.id.breed_list_recycler_view)
+  RecyclerView breedListRecycler;
+
+  @BindView(R.id.toolbar)
+  Toolbar toolbar;
 
   public static BreedsListFragment newInstance(String baseURL) {
     Bundle args = new Bundle();
@@ -74,11 +81,15 @@ public class BreedsListFragment extends Fragment implements OnItemSelectedHandle
   public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
 
-    this.breedListRecycler = view.findViewById(R.id.breed_list_recycler_view);
+    //breed's list recycler initialisation
     this.breedListRecycler.setLayoutManager(new GridLayoutManager(this.getContext(), 2));
     this.adapter = new BreedsListAdapter();
     this.adapter.addOnItemSelectedHandler(this);
     this.breedListRecycler.setAdapter(this.adapter);
+    //toolbar initialisation
+    ((AppCompatActivity) this.getActivity()).setSupportActionBar(this.toolbar);
+    this.toolbar.setLogo(R.drawable.ic_dog);
+    ((AppCompatActivity) this.getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(false);
   }
 
   @Override
@@ -97,7 +108,6 @@ public class BreedsListFragment extends Fragment implements OnItemSelectedHandle
     this.showBreedDetails(sharedElement, selectedBreed);
   }
 
-  //TODO: RM - Remove Duplicated logic
   private void showBreedDetails(ImageView sharedElement, Breed selectedBreed) {
     if (this.breedDetailsFragment == null) {
       this.breedDetailsFragment = BreedDetailsFragment.newInstance(selectedBreed);
@@ -105,15 +115,17 @@ public class BreedsListFragment extends Fragment implements OnItemSelectedHandle
 
     Transition changeTransform = TransitionInflater.from(this.getContext()).
         inflateTransition(R.transition.change_image_transform);
-    Transition explodeTransform = TransitionInflater.from(this.getContext()).
-        inflateTransition(android.R.transition.explode);
+    Transition slideBottomTransform = TransitionInflater.from(this.getContext()).
+        inflateTransition(android.R.transition.slide_bottom);
 
+    Transition slideTopTransform = TransitionInflater.from(this.getContext()).
+        inflateTransition(android.R.transition.slide_top);
 
     this.setSharedElementReturnTransition(changeTransform);
-    this.setExitTransition(explodeTransform);
+    this.setExitTransition(slideTopTransform);
 
     this.breedDetailsFragment.setSharedElementEnterTransition(changeTransform);
-    this.breedDetailsFragment.setEnterTransition(explodeTransform);
+    this.breedDetailsFragment.setEnterTransition(slideBottomTransform);
 
     // Add second fragment by replacing first
     FragmentTransaction ft = this.getFragmentManager().beginTransaction()
