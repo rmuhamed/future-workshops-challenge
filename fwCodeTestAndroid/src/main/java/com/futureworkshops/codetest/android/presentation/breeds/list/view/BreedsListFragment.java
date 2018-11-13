@@ -24,6 +24,7 @@ import com.futureworkshops.codetest.android.data.network.RestManager;
 import com.futureworkshops.codetest.android.data.network.dto.BreedDto;
 import com.futureworkshops.codetest.android.data.network.rx.scheduler.WorkerSchedulerProvider;
 import com.futureworkshops.codetest.android.domain.model.Breed;
+import com.futureworkshops.codetest.android.domain.repositories.BreedsRepository;
 import com.futureworkshops.codetest.android.presentation.breeds.details.BreedDetailsFragment;
 import com.futureworkshops.codetest.android.presentation.notification.NotificationHelper;
 
@@ -95,31 +96,11 @@ public class BreedsListFragment extends Fragment implements OnItemSelectedHandle
   public void onActivityCreated(@Nullable Bundle savedInstanceState) {
     super.onActivityCreated(savedInstanceState);
 
-    WorkerSchedulerProvider provider = new WorkerSchedulerProvider();
-    Retrofit retrofit = new Retrofit.Builder()
-        .baseUrl(this.baseURL)
-        .addConverterFactory(GsonConverterFactory.create())
-        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-        .build();
-
-    RestManager manager = new RestManager(provider, retrofit);
-
-    manager.getBreeds()
-        .doOnSuccess(breedDtoList -> Observable.fromIterable(breedDtoList).map(this::mapFrom)
-            .toList()
-            .doOnSuccess(breeds -> this.adapter.updateWith(breeds))
-            .subscribe())
-        .doOnError(error -> new NotificationHelper.Builder().from(error).with(this.getContext()).show())
-        .subscribe();
-  }
-
-  private Breed mapFrom(BreedDto aBreedDto) {
-    return Breed.builder()
-        .id(aBreedDto.getId())
-        .name(aBreedDto.getName())
-        .photoUrl(aBreedDto.getPhotoUrl())
-        .description(aBreedDto.getDescription())
-        .build();
+    BreedsRepository repository = new BreedsRepository();
+    repository.getBreeds(
+        breeds -> this.adapter.updateWith(breeds),
+        error -> new NotificationHelper.Builder().with(this.getContext()).from(error).show()
+    );
   }
 
   @Override
