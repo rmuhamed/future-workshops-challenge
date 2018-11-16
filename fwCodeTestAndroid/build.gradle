@@ -36,6 +36,8 @@ dependencies {
     annotationProcessor uiDependencies.butterKnifeApt
     annotationProcessor uiDependencies.glideAnnotationProcessor
 
+    annotationProcessor domainDependencies.room
+
     implementation uiDependencies.glide
     implementation uiDependencies.butterKnife
     implementation uiDependencies.appCompat
@@ -51,7 +53,8 @@ dependencies {
     implementation domainDependencies.daggerAndroid
     implementation domainDependencies.daggerAndroidSupport
     annotationProcessor domainDependencies.daggerAndroidProcessor
-    
+
+    implementation domainDependencies.room
     implementation domainDependencies.gson
     implementation domainDependencies.okHttp
     implementation domainDependencies.okHttpUrlConnection

@@ -40,7 +40,6 @@ public class BreedsListFragment extends Fragment implements OnItemSelectedHandle
   private BreedDetailsFragment breedDetailsFragment;
 
   private static final String BASE_URL = "BASE_URL";
-  private String baseURL;
   private BreedsListAdapter adapter;
 
   @BindView(R.id.breed_list_recycler_view)
@@ -51,19 +50,11 @@ public class BreedsListFragment extends Fragment implements OnItemSelectedHandle
 
   public static BreedsListFragment newInstance(String baseURL) {
     Bundle args = new Bundle();
-    args.putString(BASE_URL, baseURL);
 
     BreedsListFragment listFragment = new BreedsListFragment();
     listFragment.setArguments(args);
 
     return listFragment;
-  }
-
-  @Override
-  public void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-
-    this.baseURL = this.getArguments().getString(BASE_URL, null);
   }
 
   @Override
