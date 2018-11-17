@@ -19,14 +19,14 @@ public class FavouritesConverter {
 
   public static List<Breed> convertFrom(List<Favourite> favourites) {
     List<Breed> breeds = new ArrayList<>(favourites.size());
-    Observable.fromIterable(favourites).map(FavouritesConverter::convert).toList()
+    Observable.fromIterable(favourites).map(FavouritesConverter::convertOne).toList()
         .doOnSuccess(breeds::addAll)
         .subscribe();
 
     return breeds;
   }
 
-  private static Breed convert(Favourite aFavourite) {
+  private static Breed convertOne(Favourite aFavourite) {
     return Breed.builder()
         .id(aFavourite.id())
         .name(aFavourite.name())

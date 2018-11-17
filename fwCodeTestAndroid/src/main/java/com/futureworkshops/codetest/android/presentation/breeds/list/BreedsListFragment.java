@@ -4,6 +4,7 @@
 
 package com.futureworkshops.codetest.android.presentation.breeds.list;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -19,6 +20,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
 import com.futureworkshops.codetest.android.R;
 import com.futureworkshops.codetest.android.domain.model.Breed;
 import com.futureworkshops.codetest.android.domain.repositories.BreedsRepository;
@@ -26,12 +28,14 @@ import com.futureworkshops.codetest.android.presentation.breeds.details.BreedDet
 import com.futureworkshops.codetest.android.presentation.breeds.view.BreedsAdapter;
 import com.futureworkshops.codetest.android.presentation.breeds.view.OnItemSelectedHandler;
 import com.futureworkshops.codetest.android.presentation.notification.NotificationHelper;
+import com.futureworkshops.codetest.android.viewmodel.breeds.list.BreedListViewModel;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
 public class BreedsListFragment extends Fragment implements OnItemSelectedHandler<Breed> {
+  public static final String RESOURCE_IS_NULL = "Resource is null";
   private BreedDetailsFragment breedDetailsFragment;
 
   private static final String BASE_URL = "BASE_URL";
@@ -42,6 +46,8 @@ public class BreedsListFragment extends Fragment implements OnItemSelectedHandle
 
   @BindView(R.id.toolbar)
   Toolbar toolbar;
+
+  private BreedListViewModel viewModel;
 
   public static BreedsListFragment newInstance(String baseURL) {
     Bundle args = new Bundle();
@@ -82,11 +88,28 @@ public class BreedsListFragment extends Fragment implements OnItemSelectedHandle
   public void onActivityCreated(@Nullable Bundle savedInstanceState) {
     super.onActivityCreated(savedInstanceState);
 
-    BreedsRepository repository = new BreedsRepository();
-    repository.getBreeds(
-        breeds -> this.adapter.updateWith(breeds),
-        error -> new NotificationHelper.Builder().with(this.getContext()).from(error).show()
-    );
+    this.viewModel = ViewModelProviders.of(this).get(BreedListViewModel.class);
+    this.viewModel.initialise(new BreedsRepository());
+    this.viewModel.getBreeds().observe(this.getViewLifecycleOwner(), resource -> {
+      if (resource != null) {
+        switch (resource.getResult()) {
+          case error:
+            new NotificationHelper.Builder()
+                .with(this.getContext())
+                .from(resource.getThrowable())
+                .show();
+            break;
+          case successful:
+            this.adapter.updateWith(resource.getData());
+            break;
+        }
+      } else {
+        new NotificationHelper.Builder()
+            .with(this.getContext())
+            .from(new NullPointerException(RESOURCE_IS_NULL))
+            .show();
+      }
+    });
   }
 
   @Override

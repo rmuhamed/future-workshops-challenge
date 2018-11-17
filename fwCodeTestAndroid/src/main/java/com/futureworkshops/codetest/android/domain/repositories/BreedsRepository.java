@@ -6,6 +6,7 @@ import com.futureworkshops.codetest.android.domain.model.Breed;
 import java.util.List;
 
 import io.reactivex.Observable;
+import io.reactivex.Single;
 import io.reactivex.functions.Consumer;
 
 /**
@@ -18,22 +19,7 @@ public class BreedsRepository  {
     this.networkRepository = NetworkRepository.getInstance();
   }
 
-  public void getBreeds(Consumer<List<Breed>> successConsumer, Consumer<Throwable> errorConsumer) {
-    this.networkRepository.getRestManager().getBreeds()
-        .doOnSuccess(breedDtoList -> Observable.fromIterable(breedDtoList).map(this::mapFrom)
-            .toList()
-            .doOnSuccess(successConsumer)
-            .subscribe())
-        .doOnError(errorConsumer)
-        .subscribe();
-  }
-
-  private Breed mapFrom(BreedDto aBreedDto) {
-    return Breed.builder()
-        .id(aBreedDto.getId())
-        .name(aBreedDto.getName())
-        .photoUrl(aBreedDto.getPhotoUrl())
-        .description(aBreedDto.getDescription())
-        .build();
+  public Single<List<BreedDto>> getBreeds() {
+    return this.networkRepository.getRestManager().getBreeds();
   }
 }
