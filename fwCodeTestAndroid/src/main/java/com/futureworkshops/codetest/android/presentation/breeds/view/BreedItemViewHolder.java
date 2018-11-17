@@ -1,4 +1,4 @@
-package com.futureworkshops.codetest.android.presentation.breeds.list.view;
+package com.futureworkshops.codetest.android.presentation.breeds.view;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -8,6 +8,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.futureworkshops.codetest.android.R;
 import com.futureworkshops.codetest.android.domain.model.Breed;
+import com.futureworkshops.codetest.android.presentation.breeds.view.OnItemSelectedHandler;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

@@ -2,7 +2,9 @@ package com.futureworkshops.codetest.android.domain.repositories;
 
 import com.futureworkshops.codetest.android.data.persistence.FavouriteDatabase;
 import com.futureworkshops.codetest.android.data.persistence.RoomDB;
+import com.futureworkshops.codetest.android.domain.model.Breed;
 import com.futureworkshops.codetest.android.domain.repositories.entity.Favourite;
+import com.futureworkshops.codetest.android.domain.repositories.utils.FavouritesConverter;
 
 import java.util.List;
 
@@ -17,16 +19,18 @@ public class FavouritesRepository {
     this.database = RoomDB.getDefaultInstance();
   }
 
-  public List<Favourite> getAll() {
-    return this.database.favouriteDAO().getAll();
+  public List<Breed> getAll() {
+    List<Favourite> favourites = this.database.favouriteDAO().getAll();
+
+    return FavouritesConverter.convertFrom(favourites);
   }
 
   public Favourite getBy(long favouriteId) {
     return this.database.favouriteDAO().findById(favouriteId);
   }
 
-  public void save(Favourite favourite) {
-    this.database.favouriteDAO().save(favourite);
+  public void save(Breed aBreed) {
+    this.database.favouriteDAO().save(FavouritesConverter.map(aBreed));
   }
 
   public void delete(Favourite favourite) {

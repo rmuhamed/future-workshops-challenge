@@ -21,7 +21,7 @@ public class Favourite {
   @ColumnInfo(name = "photo_url")
   private final String photoUrl;
 
-  Favourite(
+  public Favourite(
       long id,
       String name,
       String description,

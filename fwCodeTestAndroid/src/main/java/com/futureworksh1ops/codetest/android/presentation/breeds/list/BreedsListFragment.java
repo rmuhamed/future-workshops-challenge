@@ -2,7 +2,7 @@
  * Copyright (c) 2018 FutureWorkshops. All rights reserved.
  */
 
-package com.futureworkshops.codetest.android.presentation.breeds.list.view;
+package com.futureworksh1ops.codetest.android.presentation.breeds.list;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -20,27 +20,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import com.futureworkshops.codetest.android.R;
-import com.futureworkshops.codetest.android.data.network.RestManager;
-import com.futureworkshops.codetest.android.data.network.dto.BreedDto;
-import com.futureworkshops.codetest.android.data.network.rx.scheduler.WorkerSchedulerProvider;
 import com.futureworkshops.codetest.android.domain.model.Breed;
 import com.futureworkshops.codetest.android.domain.repositories.BreedsRepository;
 import com.futureworkshops.codetest.android.presentation.breeds.details.BreedDetailsFragment;
+import com.futureworkshops.codetest.android.presentation.breeds.view.BreedsAdapter;
+import com.futureworkshops.codetest.android.presentation.breeds.view.OnItemSelectedHandler;
 import com.futureworkshops.codetest.android.presentation.notification.NotificationHelper;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.reactivex.Observable;
-import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class BreedsListFragment extends Fragment implements OnItemSelectedHandler<Breed> {
   private BreedDetailsFragment breedDetailsFragment;
 
   private static final String BASE_URL = "BASE_URL";
-  private BreedsListAdapter adapter;
+  private BreedsAdapter adapter;
 
   @BindView(R.id.breed_list_recycler_view)
   RecyclerView breedListRecycler;
@@ -74,7 +69,7 @@ public class BreedsListFragment extends Fragment implements OnItemSelectedHandle
 
     //breed's list recycler initialisation
     this.breedListRecycler.setLayoutManager(new GridLayoutManager(this.getContext(), 2));
-    this.adapter = new BreedsListAdapter();
+    this.adapter = new BreedsAdapter();
     this.adapter.addOnItemSelectedHandler(this);
     this.breedListRecycler.setAdapter(this.adapter);
     //toolbar initialisation

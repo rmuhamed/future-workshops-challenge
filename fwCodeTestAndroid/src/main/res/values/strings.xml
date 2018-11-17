@@ -5,4 +5,5 @@
     <string name="title_favorites">Favourites</string>
     <string name="title_breeds">Breeds</string>
     <string name="important_action">Important Action</string>
+    <string name="favourite_saved">Saved as favourite!</string>
 </resources>

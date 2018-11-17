@@ -19,7 +19,7 @@ public interface FavouriteDAO {
   @Query("SELECT * FROM Favourite")
   List<Favourite> getAll();
 
-  @Query("SELECT * FROM Favourite WHERE id=id")
+  @Query("SELECT * FROM Favourite WHERE id=:id")
   Favourite findById(long id);
 
   @Insert(onConflict = OnConflictStrategy.REPLACE)
