@@ -15,7 +15,7 @@ import java.util.List;
  */
 
 @Dao
-public interface FavouritesDAO {
+public interface FavouriteDAO {
   @Query("SELECT * FROM Favourite")
   List<Favourite> getAll();
 

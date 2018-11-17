@@ -1,7 +1,7 @@
 package com.futureworkshops.codetest.android.domain.repositories;
 
-import android.content.Context;
-
+import com.futureworkshops.codetest.android.data.persistence.FavouriteDatabase;
+import com.futureworkshops.codetest.android.data.persistence.RoomDB;
 import com.futureworkshops.codetest.android.domain.repositories.entity.Favourite;
 
 import java.util.List;
@@ -11,25 +11,25 @@ import java.util.List;
  */
 public class FavouritesRepository {
 
-  private final PersistenceRepository persistenceRepository;
+  private final FavouriteDatabase database;
 
-  public FavouritesRepository(Context context) {
-    this.persistenceRepository = PersistenceRepository.getInstance(context);
+  public FavouritesRepository() {
+    this.database = RoomDB.getDefaultInstance();
   }
 
   public List<Favourite> getAll() {
-    return this.persistenceRepository.getDbInstance().favouritesDAO().getAll();
+    return this.database.favouriteDAO().getAll();
   }
 
   public Favourite getBy(long favouriteId) {
-    return this.persistenceRepository.getDbInstance().favouritesDAO().findById(favouriteId);
+    return this.database.favouriteDAO().findById(favouriteId);
   }
 
   public void save(Favourite favourite) {
-    this.persistenceRepository.getDbInstance().favouritesDAO().save(favourite);
+    this.database.favouriteDAO().save(favourite);
   }
 
   public void delete(Favourite favourite) {
-    this.persistenceRepository.getDbInstance().favouritesDAO().remove(favourite);
+    this.database.favouriteDAO().remove(favourite);
   }
 }

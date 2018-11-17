@@ -85,7 +85,7 @@ public class FavoriteBreedsFragment extends Fragment implements OnItemSelectedHa
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        FavouritesRepository repository = new FavouritesRepository(this.getContext());
+        FavouritesRepository repository = new FavouritesRepository();
 
         repository.getAll();
     }

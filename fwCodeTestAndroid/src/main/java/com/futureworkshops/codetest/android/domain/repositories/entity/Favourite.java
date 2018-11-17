@@ -8,7 +8,7 @@ import android.arch.persistence.room.PrimaryKey;
  * Created by romh on 2018-11-13
  */
 
-@Entity(tableName = "Favourite")
+@Entity
 public class Favourite {
   @PrimaryKey
   private final long id;
