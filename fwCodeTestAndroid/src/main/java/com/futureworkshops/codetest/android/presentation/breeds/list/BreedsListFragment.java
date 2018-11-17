@@ -2,7 +2,7 @@
  * Copyright (c) 2018 FutureWorkshops. All rights reserved.
  */
 
-package com.futureworksh1ops.codetest.android.presentation.breeds.list;
+package com.futureworkshops.codetest.android.presentation.breeds.list;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;

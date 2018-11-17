@@ -5,6 +5,8 @@
 package com.futureworkshops.codetest.android.presentation.breeds.favorite;
 
 
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -23,12 +25,16 @@ import android.widget.ImageView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
 import com.futureworkshops.codetest.android.R;
 import com.futureworkshops.codetest.android.domain.model.Breed;
 import com.futureworkshops.codetest.android.domain.repositories.FavouritesRepository;
 import com.futureworkshops.codetest.android.presentation.breeds.details.BreedDetailsFragment;
 import com.futureworkshops.codetest.android.presentation.breeds.view.BreedsAdapter;
 import com.futureworkshops.codetest.android.presentation.breeds.view.OnItemSelectedHandler;
+import com.futureworkshops.codetest.android.viewmodel.breeds.favorite.FavouritesViewModel;
+
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -37,95 +43,94 @@ import com.futureworkshops.codetest.android.presentation.breeds.view.OnItemSelec
  */
 public class FavoriteBreedsFragment extends Fragment implements OnItemSelectedHandler<Breed> {
 
-    @BindView(R.id.favourite_list_recycler_view)
-    RecyclerView favouritesListRecycler;
+  @BindView(R.id.favourite_list_recycler_view)
+  RecyclerView favouritesListRecycler;
 
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
+  @BindView(R.id.toolbar)
+  Toolbar toolbar;
 
-    private BreedsAdapter adapter;
-    private BreedDetailsFragment breedDetailsFragment;
+  private BreedsAdapter adapter;
+  private BreedDetailsFragment breedDetailsFragment;
+  private FavouritesViewModel viewModel;
 
-    public static FavoriteBreedsFragment newInstance() {
+  public static FavoriteBreedsFragment newInstance() {
+    return new FavoriteBreedsFragment();
+  }
 
-        return new FavoriteBreedsFragment();
+  public FavoriteBreedsFragment() {
+    // Required empty public constructor
+  }
+
+  @Override
+  public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+  }
+
+  @Override
+  public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
+                           Bundle savedInstanceState) {
+    // Inflate the layout for this fragment
+    final View view = inflater.inflate(R.layout.fragment_favorite_breeds, container, false);
+
+    ButterKnife.bind(this, view);
+
+    return view;
+  }
+
+  @Override
+  public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    super.onViewCreated(view, savedInstanceState);
+
+    //breed's list recycler initialisation
+    this.favouritesListRecycler.setLayoutManager(new LinearLayoutManager(this.getContext()));
+    this.adapter = new BreedsAdapter();
+    this.adapter.addOnItemSelectedHandler(this);
+    this.favouritesListRecycler.setAdapter(this.adapter);
+    //toolbar initialisation
+    ((AppCompatActivity) this.getActivity()).setSupportActionBar(this.toolbar);
+    this.toolbar.setLogo(R.drawable.ic_favorite);
+    ((AppCompatActivity) this.getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(false);
+  }
+
+  @Override
+  public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+    super.onActivityCreated(savedInstanceState);
+
+    this.viewModel = ViewModelProviders.of(this).get(FavouritesViewModel.class);
+    this.viewModel.initialise(new FavouritesRepository());
+    this.viewModel.getFavouriteBreeds().observe(this.getViewLifecycleOwner(), this.adapter::updateWith);
+  }
+
+  @Override
+  public void onItemSelected(ImageView breedPhotoImage, Breed item) {
+    this.showBreedDetails(breedPhotoImage, item);
+  }
+
+  private void showBreedDetails(ImageView sharedElement, Breed selectedBreed) {
+    if (this.breedDetailsFragment == null) {
+      this.breedDetailsFragment = BreedDetailsFragment.newInstance(selectedBreed);
     }
 
-    public FavoriteBreedsFragment() {
-        // Required empty public constructor
-    }
-    
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-    
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        final View view = inflater.inflate(R.layout.fragment_favorite_breeds, container, false);
-       
-        ButterKnife.bind(this, view);
-        
-        return view;
-    }
+    Transition changeTransform = TransitionInflater.from(this.getContext()).
+        inflateTransition(R.transition.change_image_transform);
+    Transition slideBottomTransform = TransitionInflater.from(this.getContext()).
+        inflateTransition(android.R.transition.slide_bottom);
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    Transition slideTopTransform = TransitionInflater.from(this.getContext()).
+        inflateTransition(android.R.transition.slide_top);
 
-        //breed's list recycler initialisation
-        this.favouritesListRecycler.setLayoutManager(new LinearLayoutManager(this.getContext()));
-        this.adapter = new BreedsAdapter();
-        this.adapter.addOnItemSelectedHandler(this);
-        this.favouritesListRecycler.setAdapter(this.adapter);
-        //toolbar initialisation
-        ((AppCompatActivity) this.getActivity()).setSupportActionBar(this.toolbar);
-        this.toolbar.setLogo(R.drawable.ic_favorite);
-        ((AppCompatActivity) this.getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(false);
-    }
+    this.setSharedElementReturnTransition(changeTransform);
+    this.setExitTransition(slideTopTransform);
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    this.breedDetailsFragment.setSharedElementEnterTransition(changeTransform);
+    this.breedDetailsFragment.setEnterTransition(slideBottomTransform);
 
-        FavouritesRepository repository = new FavouritesRepository();
-
-        this.adapter.updateWith(repository.getAll());
-    }
-
-    @Override
-    public void onItemSelected(ImageView breedPhotoImage, Breed item) {
-        this.showBreedDetails(breedPhotoImage, item);
-    }
-
-    private void showBreedDetails(ImageView sharedElement, Breed selectedBreed) {
-        if (this.breedDetailsFragment == null) {
-            this.breedDetailsFragment = BreedDetailsFragment.newInstance(selectedBreed);
-        }
-
-        Transition changeTransform = TransitionInflater.from(this.getContext()).
-            inflateTransition(R.transition.change_image_transform);
-        Transition slideBottomTransform = TransitionInflater.from(this.getContext()).
-            inflateTransition(android.R.transition.slide_bottom);
-
-        Transition slideTopTransform = TransitionInflater.from(this.getContext()).
-            inflateTransition(android.R.transition.slide_top);
-
-        this.setSharedElementReturnTransition(changeTransform);
-        this.setExitTransition(slideTopTransform);
-
-        this.breedDetailsFragment.setSharedElementEnterTransition(changeTransform);
-        this.breedDetailsFragment.setEnterTransition(slideBottomTransform);
-
-        // Add second fragment by replacing first
-        FragmentTransaction ft = this.getFragmentManager().beginTransaction()
-            .replace(R.id.fragmentContainer, this.breedDetailsFragment)
-            .addToBackStack("transaction")
-            .addSharedElement(sharedElement, "breeds");
-        // Apply the transaction
-        ft.commit();
-
-    }
+    // Add second fragment by replacing first
+    FragmentTransaction ft = this.getFragmentManager().beginTransaction()
+        .replace(R.id.fragmentContainer, this.breedDetailsFragment)
+        .addToBackStack("transaction")
+        .addSharedElement(sharedElement, "breeds");
+    // Apply the transaction
+    ft.commit();
+  }
 }

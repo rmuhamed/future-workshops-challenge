@@ -16,7 +16,7 @@ import android.view.MenuItem;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-import com.futureworksh1ops.codetest.android.presentation.breeds.list.BreedsListFragment;
+import com.futureworkshops.codetest.android.presentation.breeds.list.BreedsListFragment;
 import com.futureworkshops.codetest.android.R;
 import com.futureworkshops.codetest.android.presentation.FwTestApp;
 import com.futureworkshops.codetest.android.presentation.breeds.favorite.FavoriteBreedsFragment;

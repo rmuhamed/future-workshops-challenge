@@ -19,18 +19,16 @@ public class FavouritesRepository {
     this.database = RoomDB.getDefaultInstance();
   }
 
-  public List<Breed> getAll() {
-    List<Favourite> favourites = this.database.favouriteDAO().getAll();
-
-    return FavouritesConverter.convertFrom(favourites);
+  public List<Favourite> getAll() {
+    return this.database.favouriteDAO().getAll();
   }
 
   public Favourite getBy(long favouriteId) {
     return this.database.favouriteDAO().findById(favouriteId);
   }
 
-  public void save(Breed aBreed) {
-    this.database.favouriteDAO().save(FavouritesConverter.map(aBreed));
+  public void save(Favourite favourite) {
+    this.database.favouriteDAO().save(favourite);
   }
 
   public void delete(Favourite favourite) {
