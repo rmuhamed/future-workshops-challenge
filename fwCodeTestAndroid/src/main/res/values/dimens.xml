@@ -10,4 +10,6 @@
     <dimen name="default_elevation">4dp</dimen>
     <dimen name="default_padding">8dp</dimen>
     <dimen name="breed_thumb_height">220dp</dimen>
+    <dimen name="title">22sp</dimen>
+    <dimen name="description">16sp</dimen>
 </resources>

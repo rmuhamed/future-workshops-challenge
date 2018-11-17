@@ -6,13 +6,13 @@
 
     <color name="colorPrimary">@color/white</color>
     <color name="colorPrimaryDark">#BFFFCF</color>
-    <color name="colorAccent">#F08080</color>
+    <color name="colorAccent">#CDAECA</color>
 
     <color name="navigationBarColor">@color/white</color>
 
     <color name="ic_launcher_background">#BDBDBD</color>
     
-    <color name="textColorPrimary">#BDBDBD</color>
+    <color name="textColorPrimary">@color/black</color>
     <color name="textColorSecondary">#757575</color>
     <color name="icons">#FFFFFF</color>
     <color name="divider">#BDBDBD</color>

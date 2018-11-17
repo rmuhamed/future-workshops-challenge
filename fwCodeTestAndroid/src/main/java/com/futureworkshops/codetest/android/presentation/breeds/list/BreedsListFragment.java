@@ -38,7 +38,6 @@ public class BreedsListFragment extends Fragment implements OnItemSelectedHandle
   public static final String RESOURCE_IS_NULL = "Resource is null";
   private BreedDetailsFragment breedDetailsFragment;
 
-  private static final String BASE_URL = "BASE_URL";
   private BreedsAdapter adapter;
 
   @BindView(R.id.breed_list_recycler_view)
@@ -49,7 +48,7 @@ public class BreedsListFragment extends Fragment implements OnItemSelectedHandle
 
   private BreedListViewModel viewModel;
 
-  public static BreedsListFragment newInstance(String baseURL) {
+  public static BreedsListFragment newInstance() {
     Bundle args = new Bundle();
 
     BreedsListFragment listFragment = new BreedsListFragment();
@@ -80,8 +79,6 @@ public class BreedsListFragment extends Fragment implements OnItemSelectedHandle
     this.breedListRecycler.setAdapter(this.adapter);
     //toolbar initialisation
     ((AppCompatActivity) this.getActivity()).setSupportActionBar(this.toolbar);
-    this.toolbar.setLogo(R.drawable.ic_dog);
-    ((AppCompatActivity) this.getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(false);
   }
 
   @Override
