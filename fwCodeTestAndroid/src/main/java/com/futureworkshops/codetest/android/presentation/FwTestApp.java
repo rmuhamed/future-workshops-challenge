@@ -5,10 +5,12 @@
 package com.futureworkshops.codetest.android.presentation;
 
 import android.app.Application;
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import com.futureworkshops.codetest.android.BuildConfig;
 import com.futureworkshops.codetest.android.data.network.server.MockServer;
+import com.futureworkshops.codetest.android.data.persistence.RoomDB;
 import com.futureworkshops.codetest.android.domain.repositories.NetworkRepository;
 
 import timber.log.Timber;
@@ -17,12 +19,25 @@ import timber.log.Timber;
 public class FwTestApp extends Application {
 
     private String baseURL;
+    private static FwTestApp appInstance;
 
     @Override
     public void onCreate() {
         super.onCreate();
         initTimber();
         initMockServer();
+
+        appInstance = this;
+
+        RoomDB.getDefaultInstance();
+    }
+
+    public static FwTestApp getInstance() {
+        return appInstance;
+    }
+
+    public static Context getContext() {
+        return appInstance.getApplicationContext();
     }
 
 

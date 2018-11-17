@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+
 apply from: '../android_commons.gradle'
 apply from: '../android_dependencies.gradle'
 
@@ -35,6 +36,7 @@ dependencies {
     
     annotationProcessor uiDependencies.butterKnifeApt
     annotationProcessor uiDependencies.glideAnnotationProcessor
+    annotationProcessor domainDependencies.roomAnnotationProcessor
 
     implementation uiDependencies.glide
     implementation uiDependencies.butterKnife
@@ -51,7 +53,8 @@ dependencies {
     implementation domainDependencies.daggerAndroid
     implementation domainDependencies.daggerAndroidSupport
     annotationProcessor domainDependencies.daggerAndroidProcessor
-    
+
+    implementation domainDependencies.room
     implementation domainDependencies.gson
     implementation domainDependencies.okHttp
     implementation domainDependencies.okHttpUrlConnection

@@ -1,4 +1,4 @@
-package com.futureworkshops.codetest.android.presentation.breeds.list.view;
+package com.futureworkshops.codetest.android.presentation.breeds.view;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -8,13 +8,15 @@ import android.view.ViewGroup;
 
 import com.futureworkshops.codetest.android.R;
 import com.futureworkshops.codetest.android.domain.model.Breed;
+import com.futureworkshops.codetest.android.presentation.breeds.view.BreedItemViewHolder;
+import com.futureworkshops.codetest.android.presentation.breeds.view.OnItemSelectedHandler;
 
 import java.util.List;
 
 /**
  * Created by romh on 2018-11-10
  */
-public class BreedsListAdapter extends RecyclerView.Adapter<BreedItemViewHolder> {
+public class BreedsAdapter extends RecyclerView.Adapter<BreedItemViewHolder> {
   private List<Breed> list;
   private OnItemSelectedHandler<Breed> onItemSelectedHandler;
 
