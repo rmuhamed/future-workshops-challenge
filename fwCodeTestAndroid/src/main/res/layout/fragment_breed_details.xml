@@ -22,6 +22,8 @@
             app:contentScrim="@color/colorPrimaryDark"
             app:expandedTitleMarginEnd="64dp"
             app:expandedTitleMarginStart="48dp"
+            app:title="@string/breed_details_title"
+            app:collapsedTitleTextAppearance="@color/black"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <ImageView
@@ -61,6 +63,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 app:cardElevation="@dimen/default_padding"
+                app:cardCornerRadius="@dimen/default_padding"
                 app:cardUseCompatPadding="true">
 
                 <LinearLayout
@@ -72,18 +75,23 @@
                         android:id="@+id/title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/title"
                         android:layout_marginLeft="@dimen/activity_horizontal_margin"
                         android:layout_marginTop="@dimen/activity_horizontal_margin"
                         android:layout_marginRight="@dimen/activity_horizontal_margin"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+                        tools:text="@string/title"/>
 
                     <TextView
                         android:id="@+id/description"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/activity_horizontal_margin"
-                        android:text="@string/title_search"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/description"
+                        android:textStyle="normal"
+                        tools:text="@string/title_search" />
 
                 </LinearLayout>
 
@@ -99,7 +107,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/activity_horizontal_margin"
         android:elevation="6dp"
-        android:src="@drawable/ic_favorite"
+        android:src="@drawable/ic_favorite_details"
+        android:backgroundTint="@color/splash_fill_color"
         app:layout_anchor="@id/app_bar_layout"
         app:layout_anchorGravity="bottom|right|end"
         app:pressedTranslationZ="12dp" />

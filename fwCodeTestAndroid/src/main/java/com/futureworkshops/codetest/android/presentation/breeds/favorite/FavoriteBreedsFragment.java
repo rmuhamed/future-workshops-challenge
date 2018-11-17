@@ -5,7 +5,6 @@
 package com.futureworkshops.codetest.android.presentation.breeds.favorite;
 
 
-import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -23,9 +22,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
 import com.futureworkshops.codetest.android.R;
 import com.futureworkshops.codetest.android.domain.model.Breed;
 import com.futureworkshops.codetest.android.domain.repositories.FavouritesRepository;
@@ -34,7 +30,8 @@ import com.futureworkshops.codetest.android.presentation.breeds.view.BreedsAdapt
 import com.futureworkshops.codetest.android.presentation.breeds.view.OnItemSelectedHandler;
 import com.futureworkshops.codetest.android.viewmodel.breeds.favorite.FavouritesViewModel;
 
-import java.util.List;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -88,8 +85,6 @@ public class FavoriteBreedsFragment extends Fragment implements OnItemSelectedHa
     this.favouritesListRecycler.setAdapter(this.adapter);
     //toolbar initialisation
     ((AppCompatActivity) this.getActivity()).setSupportActionBar(this.toolbar);
-    this.toolbar.setLogo(R.drawable.ic_favorite);
-    ((AppCompatActivity) this.getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(false);
   }
 
   @Override
