@@ -54,6 +54,7 @@ dependencies {
     implementation domainDependencies.daggerAndroidSupport
     annotationProcessor domainDependencies.daggerAndroidProcessor
 
+    implementation domainDependencies.liveDataAndViewModel
     implementation domainDependencies.room
     implementation domainDependencies.gson
     implementation domainDependencies.okHttp
