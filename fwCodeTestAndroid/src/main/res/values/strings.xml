@@ -6,6 +6,7 @@
     <string name="title_favorites">Favourites</string>
     <string name="title_breeds">Breeds</string>
     <string name="important_action">Important Action</string>
-    <string name="favourite_saved">Saved as favourite!</string>
+    <string name="favourite_saved">Now its one of your favourites!</string>
+    <string name="favourite_deleted">You don\'t like it enough to be Favourite!</string>
     <string name="breed_details_title">Breed\'s info</string>
 </resources>

@@ -107,7 +107,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/activity_horizontal_margin"
         android:elevation="6dp"
-        android:src="@drawable/ic_favorite_details"
+        tools:src="@drawable/ic_heart_white"
         android:backgroundTint="@color/splash_fill_color"
         app:layout_anchor="@id/app_bar_layout"
         app:layout_anchorGravity="bottom|right|end"
