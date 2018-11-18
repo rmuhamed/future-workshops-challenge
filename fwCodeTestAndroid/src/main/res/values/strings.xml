@@ -9,4 +9,5 @@
     <string name="favourite_saved">Now its one of your favourites!</string>
     <string name="favourite_deleted">You don\'t like it enough to be Favourite!</string>
     <string name="breed_details_title">Breed\'s info</string>
+    <string name="ok">OK</string>
 </resources>

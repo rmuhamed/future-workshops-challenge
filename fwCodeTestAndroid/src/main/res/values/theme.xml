@@ -19,8 +19,12 @@
 
         <item name="android:windowContentTransitions">true</item>
         <item name="android:windowActionBar">false</item>
+        <item name="actionOverflowButtonStyle">@style/OverFlow</item>
     </style>
 
+    <style name="OverFlow" parent="@style/Widget.AppCompat.Light.ActionButton.Overflow">
+        <item name="android:src">@drawable/ic_action_end_of_world</item>
+    </style>
 
     <style name="FwTheme" parent="BaseTheme"/>
 

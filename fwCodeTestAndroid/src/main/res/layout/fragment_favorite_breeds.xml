@@ -21,7 +21,8 @@
         android:elevation="0dp"
         android:minHeight="?attr/actionBarSize"
         app:logo="@drawable/ic_heart_grey"
-        app:titleTextColor="@color/ic_launcher_background"
+        app:titleMarginStart="@dimen/toolbar_title_start_margin"
+        app:titleTextColor="@color/colorAccent"
         app:title="@string/title_favorites"
         android:theme="?attr/actionBarTheme"
         app:layout_scrollFlags="scroll|enterAlwaysCollapsed" />

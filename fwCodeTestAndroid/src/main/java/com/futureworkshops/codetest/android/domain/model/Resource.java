@@ -4,7 +4,7 @@ package com.futureworkshops.codetest.android.domain.model;
  * Created by romh on 2018-11-17
  */
 public class Resource<T, E> {
-  public enum status { successful, error}
+  public enum status { successful, error, endOfWorld}
 
   private status result;
   private E throwable;

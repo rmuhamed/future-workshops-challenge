@@ -4,6 +4,7 @@
 
 package com.futureworkshops.codetest.android.presentation.landing;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -15,8 +16,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.futureworkshops.codetest.android.R;
+import com.futureworkshops.codetest.android.data.exception.EndOfWorldException;
+import com.futureworkshops.codetest.android.domain.repositories.NetworkRepository;
 import com.futureworkshops.codetest.android.presentation.breeds.favorite.FavoriteBreedsFragment;
 import com.futureworkshops.codetest.android.presentation.breeds.list.BreedsListFragment;
+import com.futureworkshops.codetest.android.presentation.notification.NotificationHelper;
+import com.futureworkshops.codetest.android.viewmodel.landing.MainViewModel;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -31,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements
 
   private BreedsListFragment breedsListFragment;
   private FavoriteBreedsFragment favoriteBreedsFragment;
+  private MainViewModel viewModel;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -39,12 +45,15 @@ public class MainActivity extends AppCompatActivity implements
     setContentView(R.layout.activity_main);
     ButterKnife.bind(this);
 
+    this.viewModel = ViewModelProviders.of(this).get(MainViewModel.class);
+    this.viewModel.initialise(NetworkRepository.getInstance());
+
     initBottomNavigation();
   }
 
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
-    getMenuInflater().inflate(R.menu.toolbar_menu, menu);
+    this.getMenuInflater().inflate(R.menu.toolbar_menu, menu);
     return true;
   }
 
@@ -52,8 +61,20 @@ public class MainActivity extends AppCompatActivity implements
   public boolean onOptionsItemSelected(MenuItem item) {
     switch (item.getItemId()) {
       case R.id.important_action:
-        // FIXME: 03/10/2018  this is where you need to call performImportantOperation()
+        this.viewModel.getImportantAction().observe(this, resource -> {
+          if (resource != null) {
+            switch (resource.getResult()) {
+              case endOfWorld:
+                new NotificationHelper.Builder<EndOfWorldException>()
+                    .with(this)
+                    .from(resource.getThrowable())
+                    .show();
+                break;
+            }
+          }
+        });
         break;
+
       default:
         return super.onOptionsItemSelected(item);
     }

@@ -21,7 +21,8 @@
             android:elevation="0dp"
             app:logo="@drawable/ic_dog_grey"
             app:title="@string/title_breeds"
-            app:titleTextColor="@color/ic_launcher_background"
+            app:titleTextColor="@color/colorAccent"
+            app:titleMarginStart="@dimen/toolbar_title_start_margin"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme"
             app:layout_scrollFlags="scroll|enterAlwaysCollapsed" />
