@@ -14,4 +14,8 @@ public class BundleUtils {
 
     return args;
   }
+
+  public <T extends Parcelable> T unpackExtras(String key, Bundle extras) {
+     return (extras != null && extras.containsKey(key)) ? extras.getParcelable(key) : null;
+  }
 }
