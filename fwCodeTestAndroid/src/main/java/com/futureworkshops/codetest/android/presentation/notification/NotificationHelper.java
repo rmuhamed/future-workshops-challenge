@@ -43,7 +43,7 @@ public class NotificationHelper {
       this.message = throwable.getMessage();
       this.title = throwable instanceof EndOfWorldException
           ? ((EndOfWorldException) throwable).getTitle()
-          : "Some unknown exception";
+          : "Some unknown error";
 
       return this;
     }

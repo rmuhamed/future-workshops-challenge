@@ -13,6 +13,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,8 +25,15 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.futureworkshops.codetest.android.R;
 import com.futureworkshops.codetest.android.domain.model.Breed;
+import com.futureworkshops.codetest.android.domain.model.BreedStats;
+import com.futureworkshops.codetest.android.domain.model.Resource;
+import com.futureworkshops.codetest.android.domain.repositories.BreedsRepository;
 import com.futureworkshops.codetest.android.domain.repositories.FavouritesRepository;
+import com.futureworkshops.codetest.android.presentation.breeds.BundleUtils;
+import com.futureworkshops.codetest.android.presentation.notification.NotificationHelper;
 import com.futureworkshops.codetest.android.viewmodel.breeds.details.BreedDetailsViewModel;
+
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -33,6 +41,7 @@ import butterknife.ButterKnife;
 
 public class BreedDetailsFragment extends Fragment {
   public static final String ARG_BREED = "breed";
+  public static final String FORMAT = "%d";
 
   @BindView(R.id.title)
   TextView breedNameLabel;
@@ -46,9 +55,13 @@ public class BreedDetailsFragment extends Fragment {
   @BindView(R.id.add_as_favourite)
   FloatingActionButton addAsFavouriteFab;
 
+  @BindView(R.id.stats)
+  FloatingActionButton statsButton;
+
   private BreedDetailsViewModel viewModel;
   private Breed breed;
   private boolean isFavourite;
+  private BreedStats stats;
 
   public BreedDetailsFragment() {
     // Required empty public constructor
@@ -78,14 +91,14 @@ public class BreedDetailsFragment extends Fragment {
   public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
 
-    this.breed = this.getArguments() != null
-        ? this.getArguments().getParcelable(ARG_BREED)
-        : null;
+    this.breed = new BundleUtils().unpackExtras(ARG_BREED, this.getArguments());
 
     if (this.breed != null) {
       this.paintFrom(this.breed);
 
       this.favouriteButtonHandler();
+
+      this.statsButtonHandler();
     }
   }
 
@@ -94,8 +107,10 @@ public class BreedDetailsFragment extends Fragment {
     super.onActivityCreated(savedInstanceState);
 
     this.viewModel = ViewModelProviders.of(this).get(BreedDetailsViewModel.class);
-    this.viewModel.initialise(new FavouritesRepository());
+    this.viewModel.initialise(new FavouritesRepository(), new BreedsRepository());
 
+    this.viewModel.getBreedStats(this.breed)
+        .observe(this.getViewLifecycleOwner(), this::onStatsRetrieved);
     this.isFavourite = this.viewModel.alreadyAFavourite(this.breed);
     //Update FAB based on Favourite existence status
     this.updateFABimage();
@@ -149,5 +164,55 @@ public class BreedDetailsFragment extends Fragment {
         this.isFavourite
             ? R.drawable.ic_heart_broken
             : R.drawable.ic_heart_white);
+  }
+
+  private void onStatsRetrieved(Resource<BreedStats, Throwable> resource) {
+    if (resource != null) {
+      switch (resource.getResult()) {
+        case successful:
+          this.stats = resource.getData();
+          break;
+
+        case error:
+          //Nothing to do
+          break;
+      }
+    }
+  }
+
+  private void statsButtonHandler() {
+    this.statsButton.setOnClickListener(v -> {
+      if (this.stats != null) {
+        this.presentStats(this.stats);
+      } else {
+        new NotificationHelper.Builder<NullPointerException>()
+            .with(this.getContext())
+            .from(new NullPointerException("No Stats info"))
+            .show();
+      }
+    });
+  }
+
+  private void presentStats(BreedStats stats) {
+
+    View dialogView = LayoutInflater.from(this.getContext())
+        .inflate(R.layout.dialog_stats, (ViewGroup) this.getView(), false);
+
+    ((TextView) dialogView.findViewById(R.id.trainability_label))
+        .setText(String.format(Locale.getDefault(),FORMAT, stats.trainability()));
+    ((TextView) dialogView.findViewById(R.id.adaptability_label))
+        .setText(String.format(Locale.getDefault(),FORMAT, stats.adaptability()));
+    ((TextView) dialogView.findViewById(R.id.friendliness_label))
+        .setText(String.format(Locale.getDefault(),FORMAT, stats.friendliness()));
+    ((TextView) dialogView.findViewById(R.id.grooming_label))
+        .setText(String.format(Locale.getDefault(),FORMAT, stats.grooming()));
+    ((TextView) dialogView.findViewById(R.id.excerise_needs_label))
+        .setText(String.format(Locale.getDefault(), FORMAT, stats.exerciseNeeds()));
+
+    new AlertDialog.Builder(this.getContext())
+        .setView(dialogView)
+        .setCancelable(true)
+        .create()
+        .show();
   }
 }

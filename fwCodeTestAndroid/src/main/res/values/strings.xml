@@ -10,4 +10,10 @@
     <string name="favourite_deleted">You don\'t like it enough to be Favourite!</string>
     <string name="breed_details_title">Breed\'s info</string>
     <string name="ok">OK</string>
+    <string name="breed_stats">Breed Stats</string>
+    <string name="excerise_needs">Exercise needs</string>
+    <string name="trainability">Trainability</string>
+    <string name="grooming">Grooming</string>
+    <string name="adaptability">Adaptability</string>
+    <string name="friendliness">Friendliness</string>
 </resources>

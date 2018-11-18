@@ -37,14 +37,14 @@ public class BreedListViewModel extends ViewModel {
 
   private void retrieveBreeds() {
     this.repository.getBreeds()
-        .doOnSuccess(  breedDtoList -> Observable.fromIterable(breedDtoList).map(BreedConverter::from)
+        .doOnSuccess(breedDtoList -> Observable.fromIterable(breedDtoList).map(BreedConverter::from)
             .toList()
             .doOnSuccess(this::notifySuccessful)
             .subscribe())
         .doOnError(this::notifyError)
-
         .subscribe();
   }
+
   private void notifyError(Throwable error) {
     this.liveData.postValue(this.buildResource(Resource.status.error, null, error));
   }
