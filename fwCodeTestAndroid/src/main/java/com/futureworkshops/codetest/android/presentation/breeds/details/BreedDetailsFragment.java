@@ -7,17 +7,19 @@ package com.futureworkshops.codetest.android.presentation.breeds.details;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
+import android.support.annotation.AnimRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.BaseTransientBottomBar;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.futureworkshops.codetest.android.R;
@@ -45,6 +47,8 @@ public class BreedDetailsFragment extends Fragment {
   FloatingActionButton addAsFavouriteFab;
 
   private BreedDetailsViewModel viewModel;
+  private Breed breed;
+  private boolean isFavourite;
 
   public BreedDetailsFragment() {
     // Required empty public constructor
@@ -79,17 +83,14 @@ public class BreedDetailsFragment extends Fragment {
   public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
 
-    if (this.getArguments() != null) {
-      Breed breed = this.getArguments().getParcelable(ARG_BREED);
-      this.breedNameLabel.setText(breed.name());
-      this.breedDescriptionLabel.setText(breed.description());
+    this.breed = this.getArguments() != null
+        ? this.getArguments().getParcelable(ARG_BREED)
+        : null;
 
-      Glide.with(this.breedImage.getContext())
-          .load(breed.photoUrl())
-          .into(this.breedImage);
+    if (this.breed != null) {
+      this.paintFrom(this.breed);
 
-      this.addAsFavouriteFab.setOnClickListener(this::addFavourite);
-      this.addAsFavouriteFab.setTag(R.id.breed, breed);
+      this.favouriteButtonHandler();
     }
   }
 
@@ -99,11 +100,59 @@ public class BreedDetailsFragment extends Fragment {
 
     this.viewModel = ViewModelProviders.of(this).get(BreedDetailsViewModel.class);
     this.viewModel.initialise(new FavouritesRepository());
+
+    this.isFavourite = this.viewModel.alreadyAFavourite(this.breed);
+    //Update FAB based on Favourite existence status
+    this.updateFABimage();
   }
 
   private void addFavourite(View view) {
-    this.viewModel.saveFavourite((Breed) view.getTag(R.id.breed));
+    this.viewModel.saveAsFavourite((Breed) view.getTag(R.id.breed));
+    this.isFavourite = true;
 
-    Snackbar.make(this.addAsFavouriteFab, R.string.favourite_saved, BaseTransientBottomBar.LENGTH_SHORT).show();
+    Snackbar.make(view, R.string.favourite_saved, Toast.LENGTH_SHORT).show();
+  }
+
+  private void removeFavourite(View view) {
+    this.viewModel.eraseAsFavourite((Breed) view.getTag(R.id.breed));
+    this.isFavourite = false;
+
+    Snackbar.make(view, R.string.favourite_deleted, Toast.LENGTH_SHORT).show();
+  }
+
+  private void paintFrom(Breed breed) {
+    this.breedNameLabel.setText(breed.name());
+    this.breedDescriptionLabel.setText(breed.description());
+
+    Glide.with(this.breedImage.getContext())
+        .load(breed.photoUrl())
+        .into(this.breedImage);
+  }
+
+  private void favouriteButtonHandler() {
+    this.addAsFavouriteFab.setTag(R.id.breed, this.breed);
+    this.addAsFavouriteFab.setOnClickListener(v -> {
+      if(this.isFavourite) {
+        this.removeFavourite(v);
+      } else{
+        this.addFavourite(v);
+      }
+
+      this.animateFAB();
+      this.updateFABimage();
+    });
+  }
+
+  private void animateFAB() {
+    @AnimRes int animResource = this.isFavourite ? R.anim.scale_down : R.anim.scale_up;
+
+    this.addAsFavouriteFab.startAnimation(AnimationUtils.loadAnimation(this.getContext(), animResource));
+  }
+
+  private void updateFABimage() {
+    this.addAsFavouriteFab.setImageResource(
+        this.isFavourite
+            ? R.drawable.ic_heart_broken
+            : R.drawable.ic_heart_white);
   }
 }

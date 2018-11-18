@@ -20,7 +20,7 @@
         android:background="?attr/colorPrimaryDark"
         android:elevation="0dp"
         android:minHeight="?attr/actionBarSize"
-        app:logo="@drawable/ic_favorite_grey"
+        app:logo="@drawable/ic_heart_grey"
         app:titleTextColor="@color/ic_launcher_background"
         app:title="@string/title_favorites"
         android:theme="?attr/actionBarTheme"
