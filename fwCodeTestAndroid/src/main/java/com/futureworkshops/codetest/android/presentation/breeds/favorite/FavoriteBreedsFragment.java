@@ -25,6 +25,7 @@ import android.widget.ImageView;
 import com.futureworkshops.codetest.android.R;
 import com.futureworkshops.codetest.android.domain.model.Breed;
 import com.futureworkshops.codetest.android.domain.repositories.FavouritesRepository;
+import com.futureworkshops.codetest.android.presentation.breeds.BundleUtils;
 import com.futureworkshops.codetest.android.presentation.breeds.details.BreedDetailsFragment;
 import com.futureworkshops.codetest.android.presentation.breeds.view.BreedsAdapter;
 import com.futureworkshops.codetest.android.presentation.breeds.view.OnItemSelectedHandler;
@@ -103,8 +104,11 @@ public class FavoriteBreedsFragment extends Fragment implements OnItemSelectedHa
 
   private void showBreedDetails(ImageView sharedElement, Breed selectedBreed) {
     if (this.breedDetailsFragment == null) {
-      this.breedDetailsFragment = BreedDetailsFragment.newInstance(selectedBreed);
+      this.breedDetailsFragment = BreedDetailsFragment.newInstance();
     }
+
+    this.breedDetailsFragment.setArguments(
+        new BundleUtils().packagedExtras(BreedDetailsFragment.ARG_BREED, selectedBreed));
 
     Transition changeTransform = TransitionInflater.from(this.getContext()).
         inflateTransition(R.transition.change_image_transform);

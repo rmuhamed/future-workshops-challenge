@@ -30,7 +30,7 @@ import butterknife.ButterKnife;
 
 
 public class BreedDetailsFragment extends Fragment {
-  private static final String ARG_BREED = "breed";
+  public static final String ARG_BREED = "breed";
 
   @BindView(R.id.title)
   TextView breedNameLabel;
@@ -54,15 +54,10 @@ public class BreedDetailsFragment extends Fragment {
    * Use this factory method to create a new instance of
    * this fragment using the provided parameters.
    *
-   * @param breed Parameter 1.
    * @return A new instance of fragment BreedDetailsFragment.
    */
-  public static BreedDetailsFragment newInstance(Breed breed) {
-    BreedDetailsFragment fragment = new BreedDetailsFragment();
-    Bundle args = new Bundle();
-    args.putParcelable(ARG_BREED, breed);
-    fragment.setArguments(args);
-    return fragment;
+  public static BreedDetailsFragment newInstance() {
+    return new BreedDetailsFragment();
   }
 
   @Nullable
